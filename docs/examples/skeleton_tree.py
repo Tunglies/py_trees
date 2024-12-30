@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""Example showing how to create and tick a simple behaviour tree."""
 
 import py_trees
 
 if __name__ == "__main__":
-
     root = py_trees.composites.Selector("Selector", memory=False)
     high = py_trees.behaviours.Success(name="High Priority")
     med = py_trees.behaviours.Success(name="Med Priority")
@@ -15,7 +15,8 @@ if __name__ == "__main__":
     print(py_trees.display.unicode_tree(root=root))
     behaviour_tree.setup(timeout=15)
 
-    def print_tree(tree):
+    def print_tree(tree: py_trees.trees.BehaviourTree) -> None:
+        """Print the behaviour tree and its current status."""
         print(py_trees.display.unicode_tree(root=tree.root, show_status=True))
 
     try:
